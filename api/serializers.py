@@ -11,7 +11,6 @@ class UserSerializer(serializers.ModelSerializer):
         extra_kwargs = {'password': {'write_only': True}}
 
     def create(self, validated_data):
-
         user = get_user_model().objects.create_user(**validated_data)
         return user
 
@@ -40,6 +39,6 @@ class CommentSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Comment
-        fields = ('id', 'text', 'userComment', 'Post')
+        fields = ('id', 'text', 'userComment', 'post')
         extra_kwargs = {'userComment': {'read_only': True}}
 
